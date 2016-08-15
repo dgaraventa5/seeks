@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Register New User</h1>
+<% if flash[:errors]
+	flash[:errors].each do |e|%>
+	<h4><%=e%></h4>
+	<%end
+end%>
+	<form action="/users/" method="post">
+		<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+		Email: <input type="text" name="Email"><br>
+		Name: <input type="text" name="Name"><br>
+		Password: <input type="text" name="Password"><br>
+		Password Confirmation: <input type="text" name="Password_Confirmation"><br>
+		<input type="submit" name="Join" value="Join">
+	</form>
+</body>
+</html>

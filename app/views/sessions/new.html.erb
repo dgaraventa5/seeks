@@ -1,0 +1,10 @@
+<h1>Log In</h1>
+<% if flash[:errors] %>
+	<h4><%=flash[:errors]%></h4>
+<%end%>
+<form method="post" action="/sessions/">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	Email: <input type="text" name="Email"><br>
+	Password: <input type="text" name="Password"><br>
+	<input type="submit" value="Log In">
+</form>

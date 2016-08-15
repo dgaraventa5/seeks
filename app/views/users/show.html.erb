@@ -1,0 +1,24 @@
+<h1><%=@user.name%>!</h1>
+<% if session[:user_id] == @user.id %>
+	<h3><a href="/users/<%=session[:user_id]%>/edit">Edit Profile</a></h3>
+<%end%> 
+
+<h4>Secrets</h4>
+
+
+<form method="post" action="/secrets/">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+	<label>New Secret: <br><textarea name="content"></textarea></label><br>
+	<input type="submit" value="Create Secret">
+</form>
+
+<% @secrets.each do |secret| %>
+	<p><%=secret.content%> | <%=secret.likes.count%> likes | <% if session[:user_id] == secret.user_id %> <a href="/secrets/<%=secret.id%>" data-method="delete"><button>Delete</button></a> <%end%></p>
+<%end%>
+
+
+
+
+
+
+
